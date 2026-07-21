@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #070b12;
+  color: #e6edf6;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Industrial backdrop: layered radial glows + grid */
+.app-bg {
+  background:
+    radial-gradient(1200px 600px at 12% -10%, rgba(58, 160, 255, 0.10), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(255, 122, 26, 0.08), transparent 55%),
+    radial-gradient(800px 700px at 50% 120%, rgba(63, 208, 160, 0.06), transparent 60%),
+    #070b12;
+}
+
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(120, 160, 200, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 160, 200, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Glass card */
+.glass {
+  background: linear-gradient(180deg, rgba(18, 28, 40, 0.72), rgba(11, 17, 24, 0.72));
+  border: 1px solid rgba(120, 160, 200, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.glass-strong {
+  background: linear-gradient(180deg, rgba(20, 32, 46, 0.92), rgba(10, 16, 23, 0.92));
+  border: 1px solid rgba(120, 160, 200, 0.16);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(120, 160, 200, 0.18);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 160, 200, 0.3);
+  background-clip: padding-box;
+}
+
+/* Skeleton shimmer */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(120, 160, 200, 0.06) 25%,
+    rgba(120, 160, 200, 0.16) 37%,
+    rgba(120, 160, 200, 0.06) 63%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Text gradient */
+.text-grad {
+  background: linear-gradient(90deg, #e6edf6, #7fb4ff 60%, #3aa0ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Status dot pulse */
+.dot-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  border: 2px solid currentColor;
+  opacity: 0.6;
+  animation: dotpulse 1.6s ease-out infinite;
+}
+@keyframes dotpulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* Subtle scan line for CCTV tiles */
+.scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.18) 0px,
+    rgba(0, 0, 0, 0.18) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* Focus ring */
+.focus-ring:focus-visible {
+  outline: 2px solid #3aa0ff;
+  outline-offset: 2px;
+}
